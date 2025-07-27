@@ -11,11 +11,11 @@ cloudinary.config({
 const uploadOnCloudinary = async (filePath) => {
   try {
     if (!filePath) return null;
-    const response = await cloudinary.uploader.upload(filePath, {
+    const result = await cloudinary.uploader.upload(filePath, {
       resource_type: "auto", // Automatically detect resource type (image, video, etc.)
     });
-    console.log("File uploaded to Cloudinary:", response.url);
-    fs.unlinkSync(filePath); // Remove the file after upload
+    console.log("File uploaded to Cloudinary:", result.url);
+    // fs.unlinkSync(filePath); // Remove the file after upload
     return result;
   } catch (error) {
     console.error("Error uploading to Cloudinary:", error);
